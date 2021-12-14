@@ -7,6 +7,16 @@ const routes = [
     name: 'Home',
     component: Home,
   },
+  {
+    path: '/appointment',
+    name: 'Appointment',
+    component: () => import('@/views/Appointment'),
+  },
+  {
+    path: '/newappointment',
+    name: 'New-appointment',
+    component: () => import('@/views/New-appointment'),
+  },
 ]
 
 const router = createRouter({
