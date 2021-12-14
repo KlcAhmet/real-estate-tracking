@@ -4,11 +4,7 @@ import appointment from '@/store/modules/appointment'
 export default createStore({
   state: {},
   mutations: {},
-  actions: {
-    start({dispatch}) {
-      dispatch('startAppointment')
-    }
-  },
+  actions: {},
   modules: {
     appointment: appointment,
   },
