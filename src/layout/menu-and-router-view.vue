@@ -1,6 +1,6 @@
 <template lang="pug">
 .row.menuandrouter
-  .col-2(style="background-color: orange")
+  .col-2.pe-0(style="background-color: orange")
     Drawer
   .col-10
     router-view
