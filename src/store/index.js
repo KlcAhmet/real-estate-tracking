@@ -1,8 +1,16 @@
-import { createStore } from "vuex";
+import { createStore } from 'vuex'
+import appointment from '@/store/modules/appointment'
 
 export default createStore({
   state: {},
   mutations: {},
-  actions: {},
-  modules: {},
-});
+  actions: {
+    start({dispatch}) {
+      dispatch('startAppointment')
+    }
+  },
+  modules: {
+    appointment: appointment,
+  },
+  getters: {},
+})

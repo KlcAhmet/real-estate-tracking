@@ -8,6 +8,9 @@ import MenuAndRouterView from '@/layout/menu-and-router-view'
 export default {
   name: 'App',
   components: { MenuAndRouterView },
+  created() {
+    this.$store.dispatch('start')
+  },
 }
 </script>
 <style lang="scss"></style>
