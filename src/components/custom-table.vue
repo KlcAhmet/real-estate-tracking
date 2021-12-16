@@ -1,7 +1,7 @@
 <template lang="pug">
 .col-12(colspan="12" v-if="!listItems.length")
   .text-center Loading Data
-table.table(v-else)
+table.table.table-hover(v-else)
   thead
     tr
       th(scope="col") #
@@ -9,10 +9,16 @@ table.table(v-else)
         label {{item.name}}
           button.btn.btn-primary.btn-sm(type="button" v-if="item.short") UP
   tbody
-    tr(v-for="(listItem, listItemIndex) in listItems" :key="listItemIndex")
+    tr(
+      v-for="(listItem, listItemIndex) in listItems" :key="listItemIndex"
+      @click="selectedItem(listItem.originalValue)"
+      role="button"
+      )
       th(scope="row") {{listItemIndex}}
-      td(v-for="(itemName, itemIndex) in Object.values(listItem)" :key="itemIndex")
-        | {{itemName}}
+      td(
+        v-for="(itemName, itemIndex) in Object.values(listItem).splice(0,Object.values(listItem).length-1)"
+        :key="itemIndex"
+        ) {{itemName}}
 </template>
 
 <script>
@@ -40,8 +46,14 @@ export default {
         this.headers.forEach((headers) => {
           value[headers.key] = items[headers.key]
         })
+        value.originalValue = items
         return value
       })
+    },
+  },
+  methods: {
+    selectedItem(item) {
+      console.log(item)
     },
   },
 }
