@@ -1,11 +1,13 @@
 <template lang="pug">
-table.table
+.col-12(colspan="12" v-if="!listItems.length")
+  .text-center Loading Data
+table.table(v-else)
   thead
     tr
       th(scope="col") #
       th(scope="col" v-for="(item, index) in listHeaders" :key="index")
         label {{item.name}}
-        button.btn.btn-primary.btn-sm(type="button" v-if="item.short") UP
+          button.btn.btn-primary.btn-sm(type="button" v-if="item.short") UP
   tbody
     tr(v-for="(listItem, listItemIndex) in listItems" :key="listItemIndex")
       th(scope="row") {{listItemIndex}}
@@ -41,10 +43,6 @@ export default {
         return value
       })
     },
-  },
-  created() {
-    console.log(this.items)
-    console.log(this.headers)
   },
 }
 </script>
