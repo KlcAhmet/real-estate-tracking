@@ -6,7 +6,7 @@ div Appointment
 export default {
   name: 'Appointment',
   created() {
-    this.$store.dispatch('startAppointment')
+    this.$store.dispatch('getAppointment')
   },
 }
 </script>
