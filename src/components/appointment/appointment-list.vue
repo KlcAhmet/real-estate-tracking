@@ -17,21 +17,15 @@ export default {
         else
           return this.$store.getters.getAppointment.map((appointment) => {
             return {
-              createdTime: this.$moment(
-                appointment?.createdTime,
-                'YYYY-MM-DD HH.mm'
-              )
-                .utc()
-                .format('DD-MM-YYYY HH.mm'),
+              createdTime: this.$moment(appointment?.createdTime).format(
+                'DD-MM-YYYY HH.mm'
+              ),
               agend_id: appointment?.fields?.agend_id,
               agent_name: appointment?.fields?.agent_name.join(' '),
               agent_surname: appointment?.fields?.agent_surname.join(' '),
               appointment_date: this.$moment(
-                appointment?.fields?.appointment_date,
-                'YYYY-MM-DD HH.mm'
-              )
-                .utc()
-                .format('DD-MM-YYYY HH.mm'),
+                appointment?.fields?.appointment_date
+              ).format('DD-MM-YYYY HH.mm'),
               appointment_id: appointment?.fields?.appointment_id,
               appointment_postcode: appointment?.fields?.appointment_postcode,
               contact_email: appointment?.fields?.contact_email.join('\n'),
