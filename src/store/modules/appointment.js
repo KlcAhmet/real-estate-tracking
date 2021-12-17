@@ -1,23 +1,39 @@
 export default {
   state: () => ({
-    appointment: null,
+    allAppointments: null,
+    isAllAppointmentsNull: true,
+    filteredAppointments: null,
   }),
   mutations: {
-    setAppointment(state, payload) {
-      state.appointment = payload
+    setFilteredAppointments(state, payload) {
+      state.filteredAppointments = payload
+    },
+    setIsAllAppointmentsNull(state, payload) {
+      state.isAllAppointmentsNull = payload
+    },
+    setAllAppointments(state, payload) {
+      state.allAppointments = payload
     },
   },
   actions: {
-    async getAppointment({ dispatch, commit }, path = '') {
+    async getAppointment({ dispatch, commit, state }, path = '') {
       const response = await dispatch('getAirtable', {
         uri: '/Appointments' + path,
       })
-      commit('setAppointment', response?.data?.records)
+      if (state.isAllAppointmentsNull) {
+        commit('setAllAppointments', response?.data?.records)
+        commit('setIsAllAppointmentsNull', !state.isAllAppointmentsNull)
+      }
+
+      commit('setFilteredAppointments', response?.data?.records)
     },
   },
   getters: {
-    getAppointment(state) {
-      return state.appointment
+    getFilteredAppointments(state) {
+      return state.filteredAppointments
+    },
+    getAllAppointments(state) {
+      return state.allAppointments
     },
   },
 }

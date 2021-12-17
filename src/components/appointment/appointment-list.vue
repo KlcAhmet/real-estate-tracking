@@ -15,29 +15,32 @@ export default {
         console.log(value)
       },
       get() {
-        if (!this.$store.getters.getAppointment) return []
+        if (!this.$store.getters.getFilteredAppointments) return []
         else
-          return this.$store.getters.getAppointment.map((appointment) => {
-            return {
-              createdTime: this.$moment(appointment?.createdTime).format(
-                'DD-MM-YYYY HH.mm'
-              ),
-              agend_id: appointment?.fields?.agend_id,
-              agent_name: appointment?.fields?.agent_name.join(' '),
-              agent_surname: appointment?.fields?.agent_surname.join(' '),
-              appointment_date: this.$moment(
-                appointment?.fields?.appointment_date
-              ).format('DD-MM-YYYY HH.mm'),
-              appointment_id: appointment?.fields?.appointment_id,
-              appointment_postcode: appointment?.fields?.appointment_postcode,
-              contact_email: appointment?.fields?.contact_email.join('\n'),
-              contact_id: appointment?.fields?.contact_id.join('\n'),
-              contact_name: appointment?.fields?.contact_name.join('\n'),
-              contact_phone: appointment?.fields?.contact_phone.join('\n'),
-              contact_surname: appointment?.fields?.contact_surname.join('\n'),
-              id: appointment?.id,
+          return this.$store.getters.getFilteredAppointments.map(
+            (appointment) => {
+              return {
+                createdTime: this.$moment(appointment?.createdTime).format(
+                  'DD-MM-YYYY HH.mm'
+                ),
+                agend_id: appointment?.fields?.agend_id,
+                agent_name: appointment?.fields?.agent_name.join(' '),
+                agent_surname: appointment?.fields?.agent_surname.join(' '),
+                appointment_date: this.$moment(
+                  appointment?.fields?.appointment_date
+                ).format('DD-MM-YYYY HH.mm'),
+                appointment_id: appointment?.fields?.appointment_id,
+                appointment_postcode: appointment?.fields?.appointment_postcode,
+                contact_email: appointment?.fields?.contact_email.join('\n'),
+                contact_id: appointment?.fields?.contact_id.join('\n'),
+                contact_name: appointment?.fields?.contact_name.join('\n'),
+                contact_phone: appointment?.fields?.contact_phone.join('\n'),
+                contact_surname:
+                  appointment?.fields?.contact_surname.join('\n'),
+                id: appointment?.id,
+              }
             }
-          })
+          )
       },
     },
     headers() {
