@@ -1,5 +1,5 @@
 <template lang="pug">
-CustomTable(:items="list" :headers="headers")
+CustomTable(:items="list" :headers="headers" @sort="sort")
 </template>
 
 <script>
@@ -46,20 +46,87 @@ export default {
     },
     headers() {
       return [
-        { key: 'createdTime', name: 'Created Time', short: false },
-        { key: 'agent_name', name: 'Agent Name', short: false },
-        { key: 'agent_surname', name: 'Agent Surname', short: false },
-        { key: 'appointment_date', name: 'Appointment Date', short: true },
+        {
+          key: 'createdTime',
+          name: 'Created Time',
+          sort: {
+            value: false,
+            type: false,
+          },
+        },
+        {
+          key: 'agent_name',
+          name: 'Agent Name',
+          sort: {
+            value: false,
+            type: false,
+          },
+        },
+        {
+          key: 'agent_surname',
+          name: 'Agent Surname',
+          sort: {
+            value: false,
+            type: false,
+          },
+        },
+        {
+          key: 'appointment_date',
+          name: 'Appointment Date',
+          sort: {
+            value: true,
+            type: false,
+          },
+        },
         {
           key: 'appointment_postcode',
           name: 'Appointment Post Code',
-          short: false,
+          sort: {
+            value: false,
+            type: false,
+          },
         },
-        { key: 'contact_email', name: 'Contact Email', short: false },
-        { key: 'contact_name', name: 'Contact Name', short: false },
-        { key: 'contact_phone', name: 'Contact Phone', short: false },
-        { key: 'contact_surname', name: 'Contact Surname', short: false },
+        {
+          key: 'contact_email',
+          name: 'Contact Email',
+          sort: {
+            value: false,
+            type: false,
+          },
+        },
+        {
+          key: 'contact_name',
+          name: 'Contact Name',
+          sort: {
+            value: false,
+            type: false,
+          },
+        },
+        {
+          key: 'contact_phone',
+          name: 'Contact Phone',
+          sort: {
+            value: false,
+            type: false,
+          },
+        },
+        {
+          key: 'contact_surname',
+          name: 'Contact Surname',
+          sort: {
+            value: false,
+            type: false,
+          },
+        },
       ]
+    },
+  },
+  methods: {
+    sort({ key, type }) {
+      this.$store.dispatch(
+        'getAppointment',
+        `?sort%5B0%5D%5Bfield%5D=${key}&sort%5B0%5D%5Bdirection%5D=${type}`
+      )
     },
   },
 }

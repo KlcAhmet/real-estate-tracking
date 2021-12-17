@@ -8,8 +8,10 @@ export default {
     },
   },
   actions: {
-    async getAppointment({ dispatch, commit }) {
-      const response = await dispatch('getAirtable', { uri: '/Appointments' })
+    async getAppointment({ dispatch, commit }, path = '') {
+      const response = await dispatch('getAirtable', {
+        uri: '/Appointments' + path,
+      })
       commit('setAppointment', response?.data?.records)
     },
   },

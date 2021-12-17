@@ -5,9 +5,20 @@ table.table.table-hover(v-else)
   thead
     tr
       th(scope="col") #
-      th(scope="col" v-for="(item, index) in listHeaders" :key="index")
-        label {{item.name}}
-          button.btn.btn-primary.btn-sm(type="button" v-if="item.short") UP
+      th(scope="col" v-for="(item, index) in listHeaders"
+        :key="index")
+        .d-flex.align-items-center
+          span {{item.name}}
+          span.fas.fa-arrow-up(
+              type="button"
+              v-if="item.sort.value && item.sort.type"
+              @click="listHeaders = item"
+              ) 
+          span.fas.fa-arrow-down(
+              type="button"
+              v-if="item.sort.value && !item.sort.type"
+              @click="listHeaders = item"
+              ) 
   tbody
     tr(
       v-for="(listItem, listItemIndex) in listItems" :key="listItemIndex"
@@ -24,6 +35,7 @@ table.table.table-hover(v-else)
 <script>
 export default {
   name: 'custom-table',
+  emits: ['sort'],
   props: {
     items: {
       type: Array,
@@ -35,10 +47,25 @@ export default {
     },
   },
   computed: {
-    listHeaders() {
-      return this.headers.map((headers) => {
-        return { name: headers.name, short: headers.short }
-      })
+    listHeaders: {
+      set(value) {
+        this.listHeadersData = this.listHeadersData.map((header) => {
+          if (value.key == header.key) {
+            header.sort.type = !value.sort.type
+          }
+          return header
+        })
+        this.$emit('sort', {
+          key: value.key,
+          type: value.sort.type ? 'desc' : 'asc',
+        })
+      },
+      get() {
+        if (this.listHeadersData.length == 0)
+          // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+          this.listHeadersData = this.headers
+        return this.listHeadersData
+      },
     },
     listItems() {
       return this.items.map((items) => {
@@ -50,6 +77,11 @@ export default {
         return value
       })
     },
+  },
+  data() {
+    return {
+      listHeadersData: [],
+    }
   },
   methods: {
     selectedItem(item) {
