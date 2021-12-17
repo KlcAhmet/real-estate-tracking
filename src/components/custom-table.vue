@@ -23,6 +23,7 @@ table.table.table-hover(v-else)
     tr(
       v-for="(listItem, listItemIndex) in listItems" :key="listItemIndex"
       @click="selectedItem(listItem.originalValue)"
+      :class="(disabledCheck(Object.values(listItem).splice(0,Object.values(listItem).length-1))? 'table-secondary': '')"
       role="button"
       )
       th(scope="row") {{listItemIndex}}
@@ -44,6 +45,9 @@ export default {
     headers: {
       type: Array,
       required: true,
+    },
+    disabledRows: {
+      type: Array,
     },
   },
   computed: {
@@ -86,6 +90,10 @@ export default {
   methods: {
     selectedItem(item) {
       console.log(item)
+    },
+    // eslint-disable-next-line no-unused-vars
+    disabledCheck(items) {
+      return items.some((item) => this.disabledRows.includes(item))
     },
   },
 }

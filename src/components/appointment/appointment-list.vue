@@ -1,5 +1,7 @@
 <template lang="pug">
-CustomTable(:items="list" :headers="headers" @sort="sort")
+CustomTable(:items="list" :headers="headers"
+  @sort="sort" :disabledRows="disabledRows"
+  )
 </template>
 
 <script>
@@ -113,6 +115,15 @@ export default {
           },
         },
       ]
+    },
+    disabledRows() {
+      let items = []
+      let dateNow = this.$moment()
+      this.list.forEach((item) => {
+        if (this.$moment(item.appointment_date, 'DD-MM-YYYY HH:mm') < dateNow)
+          items.push(item.appointment_date)
+      })
+      return items
     },
   },
   methods: {
