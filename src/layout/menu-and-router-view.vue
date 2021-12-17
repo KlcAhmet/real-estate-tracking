@@ -17,4 +17,5 @@ export default {
 <style lang="sass">
 .menuandrouter
   height: 100vh
+  margin: 0
 </style>

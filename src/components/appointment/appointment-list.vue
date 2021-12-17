@@ -1,14 +1,21 @@
 <template lang="pug">
-CustomTable(:items="list" :headers="headers"
-  @sort="sort" :disabledRows="disabledRows"
-  )
+.row.p-4
+  .col-12
+    .row
+      .col-5.ms-auto
+        AppointmentFilter
+  .col-12
+    CustomTable(:items="list" :headers="headers"
+      @sort="sort" :disabledRows="disabledRows"
+    )
 </template>
 
 <script>
+import AppointmentFilter from '@/components/appointment/appointment-filter'
 import CustomTable from '@/components/custom-table'
 export default {
   name: 'appointment-list',
-  components: { CustomTable },
+  components: { AppointmentFilter, CustomTable },
   computed: {
     list: {
       set(value) {
