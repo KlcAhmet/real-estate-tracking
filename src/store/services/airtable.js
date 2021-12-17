@@ -3,7 +3,7 @@ export default {
   mutations: {},
   actions: {
     /*eslint no-unused-vars: "off"*/
-    async getAirtable({dispatch}, { uri }) {
+    async getAirtable({ dispatch }, { uri }) {
       const headers = {
         baseURL: this.$env.VUE_APP_AIRTABLE_URL,
         timeout: 5000,
