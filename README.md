@@ -1,6 +1,3 @@
-## Live
--  [View Demo on Github](https://klcahmet.github.io/git-stats/)
-
 # Getting Started
 
 1. Clone project `$ git clone {the url to the GitHub repo}`
