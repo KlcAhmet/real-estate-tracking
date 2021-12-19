@@ -18,7 +18,6 @@ export default {
     },
   },
   actions: {
-    // eslint-disable-next-line no-unused-vars
     setContactKeyAndValue({ commit, state }, { key, value }) {
       state.contact[key] = value
       commit('setContact', state.contact)

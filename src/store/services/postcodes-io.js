@@ -1,3 +1,5 @@
+import { Loader } from '@googlemaps/js-api-loader'
+
 export default {
   state: () => ({
     headers: {
@@ -7,6 +9,7 @@ export default {
     loadingLonLat: false,
     loadingPostcode: false,
     postcodes: [],
+    destination: null,
   }),
   mutations: {
     setLoadingLonLat(state, payload) {
@@ -17,6 +20,9 @@ export default {
     },
     setPostCodes(state, payload) {
       state.postcodes = payload
+    },
+    setDestination(state, payload) {
+      state.destination = payload
     },
   },
   actions: {
@@ -40,8 +46,36 @@ export default {
           `postcodes/${postcode}`,
           state.headers
         )
-        console.log('longitude', response.data.result.longitude)
-        console.log('latitude', response.data.result.latitude)
+        const { longitude, latitude } = response.data.result
+
+        const loader = new Loader({
+          apiKey: this.$env.VUE_APP_GOOGLE_MAPS_JAVA_SCRIPT_API,
+          version: 'weekly',
+          libraries: ['places'],
+        })
+
+        loader.load().then((google) => {
+          // initialize services
+          const service = new google.maps.DistanceMatrixService()
+          // build request
+          const request = {
+            origins: [new google.maps.LatLng(51.729157, 0.478027)],
+            destinations: [new google.maps.LatLng(latitude, longitude)],
+            travelMode: google.maps.TravelMode.DRIVING,
+            unitSystem: google.maps.UnitSystem.METRIC,
+            avoidHighways: false,
+            avoidTolls: false,
+          }
+          service
+            .getDistanceMatrix(request)
+            .then((response) => {
+              commit('setDestination', response)
+            })
+            .catch((e) => {
+              console.log('map error: ', e)
+            })
+        })
+
         commit('setLoadingPostcode', false)
       } catch (err) {
         commit('setLoadingPostcode', false)
@@ -57,6 +91,9 @@ export default {
     },
     getPostcodes(state) {
       return state.postcodes
+    },
+    getDestination(state) {
+      return state.destination
     },
   },
 }
