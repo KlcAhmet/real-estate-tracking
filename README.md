@@ -21,7 +21,8 @@
 - ESLint & Prettier Integration
 - https://postcodes.io/
 - airtable.com
-- Google Maps JavaScript API![enter image description here](https://media2.giphy.com/media/g7thnpry8nOX1ieZ78/giphy.gif?cid=790b76118886c3265507deebcf1b2c7902eccccb748da1d6&rid=giphy.gif&ct=g)
+- Google Maps JavaScript API
+- ![enter image description here](https://media2.giphy.com/media/g7thnpry8nOX1ieZ78/giphy.gif?cid=790b76118886c3265507deebcf1b2c7902eccccb748da1d6&rid=giphy.gif&ct=g)
 - ![enter image description here](https://media0.giphy.com/media/Rp3VMbrahTEE3eNOQ4/giphy.gif?cid=790b7611a7e3fc1cdc358557143228585244271496e7d0b3&rid=giphy.gif&ct=g)
 
 
