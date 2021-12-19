@@ -1,11 +1,11 @@
 # Getting Started
 
 1. Clone project `$ git clone {the url to the GitHub repo}`
-2.  `cd` into the project
+2. `cd` into the project
 3. `$ npm install` for install dependencies
-4. `$ npm run serve`
-5. Prettier Integration `git-stats\node_modules\prettier`
-6. create .env file and copy-paste .env.development.dist
+4. create .env file and copy-paste .env.development.dist
+5. `$ npm run serve`
+6. Prettier Integration `git-stats\node_modules\prettier`
 
 
 
