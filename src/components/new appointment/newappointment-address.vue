@@ -28,6 +28,9 @@
         p Distance: {{getDestination.rows[0].elements[0].distance.text}}
       .col-12
         p Duration: {{getDestination.rows[0].elements[0].duration.text}}
+      .col-12
+        p Duration and appointment:
+          |{{this.$moment.utc(this.$moment.duration(getDestination.rows[0].elements[0].duration.value, 'seconds').add(1,'hour').asMilliseconds()).format('hh:mm')}}
 </template>
 
 <script>
