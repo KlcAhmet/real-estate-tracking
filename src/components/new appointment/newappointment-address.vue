@@ -1,7 +1,7 @@
 <template lang="pug">
 .row.h-100
   .col-12.d-flex.justify-content-center(v-if="getPostcodesLoadingLonLat") loading
-  .col-12.d-flex.justify-content-center(v-else-if="!getPostcodes ||getPostcodes.length == 0") veri yok 2
+  .col-12.d-flex.justify-content-center(v-else-if="!getPostcodes ||getPostcodes.length == 0") Haritayı yakınlaştırın ve tıklayın
   .col-12(v-else)
     h4 {{getPostcodes[0]?.admin_district}}
     h6 {{getPostcodes[0]?.admin_ward}}
