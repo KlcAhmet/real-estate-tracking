@@ -7,10 +7,14 @@ export default {
       contact_phone: '',
       Appointments: [],
     },
+    selectedPostcode: '',
   }),
   mutations: {
     setContact(state, payload) {
       state.contact = payload
+    },
+    setSelectedPostcode(state, payload) {
+      state.selectedPostcode = payload
     },
   },
   actions: {
@@ -23,6 +27,9 @@ export default {
   getters: {
     getContact(state) {
       return state.contact
+    },
+    getSelectedPostcode(state) {
+      return state.selectedPostcode
     },
   },
 }

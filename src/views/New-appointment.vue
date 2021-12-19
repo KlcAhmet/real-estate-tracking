@@ -3,14 +3,26 @@
   .row
     .col-12
       newappointmentContacts
+    .col-12.mt-4
+      .row.googlemap
+        .col-6
+          googlemap
+        .col-6
+          newappointmentAddress
 </template>
 
 <script>
 import newappointmentContacts from '@/components/new appointment/newappointment-contacts'
+import googlemap from '@/components/google map/googlemap'
+import newappointmentAddress from '@/components/new appointment/newappointment-address'
 export default {
   name: 'New-appointment',
-  components: { newappointmentContacts },
+  components: { newappointmentContacts, googlemap, newappointmentAddress },
 }
 </script>
 
-<style scoped></style>
+<style scoped lang="sass">
+.googlemap
+  height: 500px
+  max-height: 500px
+</style>
