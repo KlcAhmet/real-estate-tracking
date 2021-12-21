@@ -23,4 +23,4 @@
 - ![enter image description here](https://media0.giphy.com/media/Rp3VMbrahTEE3eNOQ4/giphy.gif?cid=790b7611a7e3fc1cdc358557143228585244271496e7d0b3&rid=giphy.gif&ct=g)
 
 
-Projede bazı yerlerde kullanabileceğimi düşündüğüm tabloyu genişletilebilir bir şekilde yaptım: [Tablo](https://github.com/KlcAhmet/real-estate-tracking/blob/main/src/components/custom-table.vue) genel özellikleri header ve listelenecek bilgiler 2 farklı prop ile alınıyor ve disabled görünmesi istenilen prop ile gönderilen array bilgileri arasında eşleşme olursa o satırı disabled gösteriyor.
+Projede bazı yerlerde kullanabileceğimi düşündüğüm tabloyu genişletilebilir bir şekilde yaptım: [Tablo](https://github.com/KlcAhmet/real-estate-tracking/blob/main/src/components/custom-table.vue) genel özellikleri header ve listelenecek bilgiler 2 farklı prop ile alınıyor ve disabled görünmesi istenilen prop ile gönderilen array bilgileri arasında eşleşme olursa o satırı disabled gösteriyor. İstenilen başlıklarda sıralama yapılabiliyor. Kullandığım ana component: [Appointment](https://github.com/KlcAhmet/real-estate-tracking/blob/main/src/components/appointment/appointment-list.vue)
